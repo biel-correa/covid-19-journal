@@ -9,10 +9,26 @@
             <h1>Journal</h1>
         </div>
     </div>
-    <div class="row">
-        <h2>Latest news:</h2>
+    <div class="row mb-3">
+        <h2>Hottest news:</h2>
+        <div class="row flex-row flex-nowrap overflow-auto">
+            {% for i in range(5) %}
+            <div class="col-md-3 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Post Title</h5>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptas deleniti fuga numquam totam ratione perferendis reprehenderit veritatis sed sint!
+                        </p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
     <div class="row">
+        <h2>Latest news:</h2>
         <form>
             <div class="row">
                 <div class="col-md-8">
