@@ -3,8 +3,8 @@ from app import app
 
 @app.route('/', methods=['GET'])
 def redirectHome():
-    return None
+    return home()
 
 @app.route('/home', methods=['GET'])
 def home():
-    return None
+    return render_template('home.html')
