@@ -18,7 +18,10 @@
                     <div class="card-body">
                         <h5 class="card-title">Post Title</h5>
                         <p class="card-text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptas deleniti fuga numquam totam ratione perferendis reprehenderit veritatis sed sint!
+                            {{
+                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptas deleniti fuga numquam totam ratione perferendis reprehenderit veritatis sed sint!" 
+                                |truncate(60) 
+                            }}
                         </p>
                         <a href="#" class="btn btn-primary">Read More</a>
                     </div>
