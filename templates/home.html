@@ -23,7 +23,7 @@
                                 |truncate(60) 
                             }}
                         </p>
-                        <a href="#" class="btn btn-primary">Read More</a>
+                        <a href="{{ url_for('post', post_id=i) }}" class="btn btn-primary">Read More</a>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                     <p class="card-text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptas deleniti fuga numquam totam ratione perferendis reprehenderit veritatis sed sint!
                     </p>
-                    <a href="#" class="btn btn-primary">Read More</a>
+                    <a href="{{ url_for('post', post_id=i) }}" class="btn btn-primary">Read More</a>
                 </div>
             </div>
         </div>

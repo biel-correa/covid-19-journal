@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Post {{ post_id }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <h1>Post {{ post_id }}</h1>
+    </div>
+    <div class="row px-3">
+        <div class="col-md-12">
+            <p>conteúdo do post {{ post_id }}</p>
+        </div>
+    </div>
+{% endblock %}

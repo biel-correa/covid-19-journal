@@ -8,3 +8,7 @@ def redirectHome():
 @app.route('/home', methods=['GET'])
 def home():
     return render_template('home.html')
+
+@app.route('/post/<int:post_id>', methods=['GET'])
+def post(post_id):
+    return render_template('post.html', post_id=post_id)
