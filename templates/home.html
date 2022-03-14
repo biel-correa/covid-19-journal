@@ -36,10 +36,9 @@
                 <div class="col-md-8">
                     <select name="state" id="state" class="form-control">
                         <option value="">Select a state</option>
-                        <option value="AC">Acre</option>
-                        <option value="AL">Alagoas</option>
-                        <option value="AP">Amapá</option>
-                        <option value="AM">Amazonas</option>
+                        {% for state in states %}
+                            <option value="{{ state }}">{{ states[state] }}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="col-md-4">

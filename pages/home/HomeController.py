@@ -1,6 +1,6 @@
 from flask import render_template
 from app import app
-from database.database import posts
+from database.database import posts, states
 
 @app.route('/', methods=['GET'])
 def redirectHome():
@@ -8,4 +8,4 @@ def redirectHome():
 
 @app.route('/home', methods=['GET'])
 def home():
-    return render_template('home.html', posts=posts)
+    return render_template('home.html', posts=posts, states=states)
