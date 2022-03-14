@@ -13,6 +13,7 @@
         <h2>Hottest news:</h2>
         <div class="row flex-row flex-nowrap overflow-auto">
             {% for post in posts %}
+            {% if post.isHot %}
             <div class="col-md-3 mb-3">
                 <div class="card">
                     <div class="card-body">
@@ -24,6 +25,7 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
             {% endfor %}
         </div>
     </div>
