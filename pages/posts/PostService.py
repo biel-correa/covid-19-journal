@@ -15,3 +15,15 @@ class PostService:
             if post.state == state:
                 postsByState.append(post)
         return postsByState
+    
+    @classmethod
+    def getHotPosts(cls, state=None):
+        if state:
+            filteredPosts = PostService.getPostsByState(state)
+        else:
+            filteredPosts = posts
+        hotPosts = []
+        for post in filteredPosts:
+            if post.isHot == True:
+                hotPosts.append(post)
+        return hotPosts

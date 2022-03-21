@@ -10,11 +10,13 @@ def redirectHome():
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if request.method == 'GET':
-        return render_template('home.html', posts=posts, states=states)
+        hotPosts = PostService.getHotPosts()
+        return render_template('home.html', posts=posts, states=states, hotPosts=hotPosts)
     
     if request.method == 'POST':
         data = request.form
         if data['state']:
             filteredPosts = PostService.getPostsByState(data['state'])
-            return render_template('home.html', posts=filteredPosts, states=states)
+            hotPosts = PostService.getHotPosts(data['state'])
+            return render_template('home.html', posts=filteredPosts, states=states, hotPosts=hotPosts)
         return render_template('home.html', posts=posts, states=states)
