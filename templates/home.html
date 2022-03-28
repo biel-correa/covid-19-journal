@@ -19,6 +19,11 @@
                 {% if post.isHot %}
                 <div class="col-md-3 mb-3">
                     <div class="card">
+                        {% if post.imageUrl != None %}
+                            <img src="{{post.imageUrl}}" alt="post image">
+                        {% else %}
+                            <img src="{{url_for('static', filename='no-image-icon.png')}}" alt="no post image">
+                        {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">{{post.title}}</h5>
                             <p class="card-text">
@@ -58,6 +63,11 @@
             {% for post in posts %}
             <div class="col-md-4 my-3">
                 <div class="card">
+                    {% if post.imageUrl != None %}
+                        <img src="{{post.imageUrl}}" alt="post image">
+                    {% else %}
+                        <img src="{{url_for('static', filename='no-image-icon.png')}}" alt="no post image">
+                    {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{post.title}}</h5>
                         <p class="card-text">

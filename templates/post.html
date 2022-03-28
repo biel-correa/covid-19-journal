@@ -5,6 +5,11 @@
 {% block content %}
 <div class="container">
     <div class="p-5 mb-4 bg-light rounded-3">
+        {% if post.imageUrl != None %}
+        <div class="image-container text-center mb-3">
+            <img src="{{post.imageUrl}}" class="img-fluid rounded" alt="post image">
+        </div>
+        {% endif %}
         <h1>{{ post.title }}</h1>
     </div>
     <div class="row px-3">
