@@ -1,7 +1,6 @@
 from flask import request, render_template
 from app import app
-from database.database import posts, states
-from pages.posts.PostService import PostService
+from pages.posts.Post import Post
 
 @app.route('/', methods=['GET'])
 def redirectHome():
@@ -10,13 +9,16 @@ def redirectHome():
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if request.method == 'GET':
-        hotPosts = PostService.getHotPosts()
+        hotPosts = Post.getHotPosts()
+        posts = Post.getAllPosts()
+        states = Post.getAllStates()
         return render_template('home.html', posts=posts, states=states, hotPosts=hotPosts)
     
     if request.method == 'POST':
         data = request.form
         if data['state']:
-            filteredPosts = PostService.getPostsByState(data['state'])
-            hotPosts = PostService.getHotPosts(data['state'])
+            filteredPosts = Post.getPostsByState(data['state'])
+            hotPosts = Post.getHotPosts(data['state'])
+            states = Post.getAllStates()
             return render_template('home.html', posts=filteredPosts, states=states, hotPosts=hotPosts)
         return render_template('home.html', posts=posts, states=states)
