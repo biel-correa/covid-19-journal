@@ -30,10 +30,28 @@
     </div>
     {% if post.comments != [] %}
     <div class="row">
-        <h3>Comments</h3>
+        <div class="d-flex justify-content-between mb-2">
+            <h3>Comments</h3>
+            <button class="btn btn-primary" id="addButton" onclick="showHideCommentForm()">Add a comment</button>
+        </div>
+        <form action="{{ url_for('commentPost', post_id=post.id) }}" method="post" id="newComment" class="d-none mb-3">
+            <div class="card">
+                <div class="card-header">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                </div>
+                <div class="card-body">
+                    <input type="text" class="form-control card-title" name="name" id="name" placeholder="Name">
+                    <textarea class="form-control card-text" name="content" id="content" placeholder="Content"></textarea>
+                    {% for error in errors %}
+                        <p class="text-danger"> {{error.message}}</p>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary mt-2">Save</button>
+                </div>
+            </div>
+        </form>
         <div class="comments">
             {% for comment in post.comments %}
-                <div class="card">
+                <div class="card mb-2">
                     <div class="card-header">
                         {{ comment.email }}
                     </div>
@@ -46,4 +64,24 @@
         </div>
     </div>
     {% endif %}
+{% endblock %}
+
+{% block script %}
+<script>
+    function showHideCommentForm() {
+        var newComment = document.getElementById('newComment')
+        var addButton = document.getElementById('addButton')
+        if (newComment.classList.contains('d-none')) {
+            newComment.classList.remove('d-none');
+            addButton.innerText = 'Cancel'
+            addButton.classList.add('btn-danger')
+            addButton.classList.remove('btn-primary')
+        } else {
+            newComment.classList.add('d-none');
+            addButton.innerText = 'Add a comment'
+            addButton.classList.remove('btn-danger')
+            addButton.classList.add('btn-primary')
+        }
+    }
+</script>
 {% endblock %}

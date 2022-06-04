@@ -63,6 +63,7 @@ class Post:
         post.editPost(post)
         return post
     
+    @classmethod
     def commentPost(self, post_id, data):
         for item in posts:
             if item.id == post_id:
