@@ -1,7 +1,9 @@
 from nanoid import generate
 
+from pages.comments.Comment import Comment
+
 class Post:
-    def __init__(self, title, content, isHot, state, imageUrl=None, likes=0, dislikes=0):
+    def __init__(self, title, content, isHot, state, imageUrl=None, likes=0, dislikes=0, comments=[]):
         self.id = generate()
         self.title = title
         self.content = content
@@ -10,6 +12,7 @@ class Post:
         self.imageUrl = imageUrl
         self.likes = likes
         self.dislikes = dislikes
+        self.comments = comments
 
     @classmethod
     def getAllPosts(cls):
@@ -60,6 +63,13 @@ class Post:
         post.editPost(post)
         return post
     
+    def commentPost(self, post_id, data):
+        for item in posts:
+            if item.id == post_id:
+                item.comments.append(data)
+                return item
+        return None
+    
     def editPost(self, newPost):
         self.title = newPost.title
         self.content = newPost.content
@@ -77,7 +87,7 @@ class Post:
 
 posts = [
         Post('First post', 'This is the first post', False, 'AC', None, 10, 5),
-        Post('Second post', 'This is the second post', True, 'AC', 'https://picsum.photos/400/300', 10, 5),
+        Post('Second post', 'This is the second post', True, 'AC', 'https://picsum.photos/400/300', 10, 5, [Comment('John', 'teste@teste.com', 'This is the first comment')]),
         Post('Third post', 'This is the third post', False, 'AL', 'https://picsum.photos/400/300', 10, 5),
 ]
 
