@@ -11,6 +11,17 @@
         </div>
         {% endif %}
         <h1>{{ post.title }}</h1>
+        <div class="d-flex justify-content-between">
+            <div class="rating">
+                <span class="likes">Likes: {{post.likes}}</span>
+                 |
+                <span class="dislikes">Dislikes: {{post.dislikes}}</span>
+            </div>
+            <div class="actions">
+                <a href="{{ url_for('likePost', post_id=post.id) }}" class="btn btn-success">Like</a>
+                <a href="{{ url_for('dislikePost', post_id=post.id) }}" class="btn btn-danger">Dislike</a>
+            </div>
+        </div>
     </div>
     <div class="row px-3">
         <div class="col-md-12">
